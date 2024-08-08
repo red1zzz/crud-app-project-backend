@@ -16,8 +16,7 @@ exports.up = function(knex) {
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE');
       table.string('item_name').notNullable();
       table.text('description');
-      table.integer('quantity').notNullable();
-      table.timestamps(true, true); 
+      table.integer('quantity').notNullable(); 
     });
 };
 

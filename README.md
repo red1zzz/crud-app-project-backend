@@ -1,0 +1,3 @@
+- Per routes check the pseudo notes for what it will be doing, which will be your basic CRUD request. 
+- Since there is not alot of info needed I combined users and items for seed and migrations.
+- Backend will be operating at localhost: 5000
