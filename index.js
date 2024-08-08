@@ -9,9 +9,9 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.get('/', (req, res) => {
-  res.send('Welcome to my Website');
+  res.status(200).send('WORKING!');
 });
 
 app.listen(port, () => {
-  console.log('This is a test if port{port} is running correctly');
+  console.log(`App listening on port:", ${port}`);
 });

@@ -4,10 +4,8 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('items').del()
-  await knex('users').del
-  
-  
+  await knex('items').del();
+  await knex('users').del();
   
   await knex('users').insert([
     {id: 1, first_name: 'Bob', last_name: 'Sagot', username: 'sagotbob', password: 'password1'},
@@ -15,9 +13,8 @@ exports.seed = async function(knex) {
   ]);
 
   await knex('items').insert([
-    {user_id:1, item_name:'pencil', decription: 'for drawing', quantity:5}
-    {user_id:1, item_name:'pen', decription: 'for perma drawing', quantity:10}
-    {user_id:2, item_name:'paper', decription: 'for writing', quantity:7}
-  
-  ])
+    {user_id: 1, item_name: 'pencil', description: 'for drawing', quantity: 5}, // <-- Missing comma after this object
+    {user_id: 1, item_name: 'pen', description: 'for permanent drawing', quantity: 10}, // <-- Missing comma after this object
+    {user_id: 2, item_name: 'paper', description: 'for writing', quantity: 7}
+  ]);
 };
