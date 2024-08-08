@@ -13,8 +13,8 @@ exports.seed = async function(knex) {
   ]);
 
   await knex('items').insert([
-    {user_id: 1, item_name: 'pencil', description: 'for drawing', quantity: 5}, // <-- Missing comma after this object
-    {user_id: 1, item_name: 'pen', description: 'for permanent drawing', quantity: 10}, // <-- Missing comma after this object
+    {user_id: 1, item_name: 'pencil', description: 'for drawing', quantity: 5},
+    {user_id: 1, item_name: 'pen', description: 'for permanent drawing', quantity: 10},
     {user_id: 2, item_name: 'paper', description: 'for writing', quantity: 7}
   ]);
 };
