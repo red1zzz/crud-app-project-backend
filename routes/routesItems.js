@@ -3,7 +3,6 @@ const router = express.Router();
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig.development);
 
-// Get all items
 router.get('/', (req, res) => {
   knex('items').select('*')
     .then(items => {
@@ -14,7 +13,6 @@ router.get('/', (req, res) => {
     });
 });
 
-// Get item by id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   knex('items').where({ id }).first()
@@ -30,7 +28,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Create new item
 router.post('/', (req, res) => {
   const newItem = req.body;
   knex('items').insert(newItem)
@@ -43,7 +40,6 @@ router.post('/', (req, res) => {
     });
 });
 
-// Update item
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const updatedItem = req.body;
@@ -61,7 +57,6 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Delete item
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   knex('items').where({ id }).del()
