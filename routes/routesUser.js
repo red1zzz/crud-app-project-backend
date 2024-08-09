@@ -3,7 +3,7 @@ const router = express.Router();
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig.development);
 
-// Get all users
+// This will be used to get all users
 router.get('/', (req, res) => {
   knex('users').select('id', 'username', 'first_name', 'last_name')
     .then(users => {
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// Get a single user by ID
+// This will be used to get all users via id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   knex('users').where({ id }).select('id', 'username', 'first_name', 'last_name').first()
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Create a new user
+
 router.post('/', (req, res) => {
   const newUser = req.body;
   knex('users').insert(newUser)
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// Update an existing user
+
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const updatedUser = req.body;
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Delete a user by ID
+
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   knex('users').where({ id }).del()
@@ -78,7 +78,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// Login route
+
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
   console.log('Received login request:', username, password);  // Log the incoming credentials
@@ -90,14 +90,14 @@ router.post('/login', (req, res) => {
         return res.status(401).json({ error: 'Invalid username or password' });
       }
 
-      console.log('Found user:', user);  // Log the user data retrieved from the database
+      console.log('Found user:', user);  
 
-      if (user.password !== password) {  // Compare the password
+      if (user.password !== password) {  
         console.log('Password does not match for user:', username);
         return res.status(401).json({ error: 'Invalid username or password' });
       }
 
-      // If username and password match, send a success response
+      
       res.status(200).json({ message: 'Login successful', user: { id: user.id, username: user.username } });
     })
     .catch(error => {
